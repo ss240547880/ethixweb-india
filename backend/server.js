@@ -62,20 +62,14 @@ app.post("/api/admin/login", adminLoginLimiter, async (req, res) => {
       email.trim().toLowerCase() ===
       process.env.ADMIN_EMAIL.trim().toLowerCase();
 
-    const passwordHash = await bcrypt.hash(
-      process.env.ADMIN_PASSWORD,
-      10
-    );
+    const passwordMatches =
+  password === process.env.ADMIN_PASSWORD;
 
-    const passwordMatches = await bcrypt.compare(
-      password,
-      passwordHash
-    );
-
-    if (!emailMatches || !passwordMatches) {
-      return res.status(401).json({ message: "Invalid email or password." });
-    }
-
+if (!emailMatches || !passwordMatches) {
+  return res.status(401).json({
+    message: "Invalid email or password."
+  });
+}
     const token = jwt.sign(
       { role: "admin", email: process.env.ADMIN_EMAIL },
       process.env.JWT_SECRET,
