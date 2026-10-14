@@ -508,11 +508,11 @@ function Contact() {
     setStatus("loading");
 
     try {
-      const response = await fetch("http://localhost:5000/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+     const response = await fetch("https://ethixweb-india-btoq.onrender.com/api/leads", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(form),
+});
       const result = await response.json();
 
       if (!response.ok) {

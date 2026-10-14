@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "./Admin.css";
 
-const API = "http://localhost:5000/api/admin";
+const API = "https://ethixweb-india-btoq.onrender.com/api/admin";
 
 export default function Admin() {
   const [email, setEmail] = useState("");
